@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surah Ar-Rahman - हिंदी में</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Poppins:wght@300;400;700&display=swap');
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ffcc00;
+            font-size: 28px;
+        }
+
+        h2 {
+            font-family: 'Amiri', serif;
+            font-size: 32px;
+            color: #00ff99;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            background: #222;
+        }
+
+        .verse {
+            margin: 20px 0;
+            padding: 15px;
+            border-left: 5px solid #ffcc00;
+            background: #333;
+            border-radius: 5px;
+        }
+
+        h3 {
+            font-family: 'Amiri', serif;
+            font-size: 28px;
+            color: #00ffff;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .meaning {
+            color: #ffaa00;
+            font-size: 20px;
+        }
+
+        .highlight {
+            background: #660000;
+            border-left: 5px solid #ff3300;
+            color: #ff9999;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #bbbbbb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>📖 सूरह अर-रहमान (Surah Ar-Rahman)</h1>
+        <h2>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</h2>
+        <p class="meaning">अल्लाह के नाम से, जो बहुत रहमत वाला और बेहद मेहरबान है।</p>
+
+        <div id="verses-container"></div>
+
+        <footer>
+            <p>📜 <strong>नोट:</strong> यह सूरह अर-रहमान का सारांश है। पूरी सूरह के लिए **क़ुरआन शरीफ़** का अध्ययन करें।</p>
+        </footer>
+    </div>
+
+    <script>
+        // JSON डेटा लोड करके HTML में दिखाने वाला कोड
+        async function loadSurah() {
+            try {
+                const response = await fetch('surah_ar_rahman.json'); // JSON फाइल लोड करें
+                const data = await response.json();
+
+                const container = document.getElementById('verses-container');
+
+                data.verses.forEach(verse => {
+                    const verseDiv = document.createElement('div');
+                    verseDiv.classList.add('verse');
+
+                    if (verse.highlight) {
+                        verseDiv.classList.add('highlight');
+                    }
+
+                    verseDiv.innerHTML = `
+                        <h3>${verse.arabic}</h3>
+                        <p><strong>अर्थ:</strong> ${verse.hindi}</p>
+                    `;
+
+                    container.appendChild(verseDiv);
+                });
+
+            } catch (error) {
+                console.error('JSON लोड करने में त्रुटि:', error);
+            }
+        }
+
+        loadSurah(); // फ़ंक्शन कॉल करें
+    </script>
+
+</body>
+</html>
