@@ -88,7 +88,7 @@
         // JSON डेटा लोड करके HTML में दिखाने वाला कोड
         async function loadSurah() {
             try {
-                const response = await fetch('surah_ar_rahman.json'); // JSON फाइल लोड करें
+                const response = await fetch('https://raw.githubusercontent.com/ydvkrn/Surah/refs/heads/main/rahman.json'); // JSON फाइल लोड करें
                 const data = await response.json();
 
                 const container = document.getElementById('verses-container');
